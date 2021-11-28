@@ -19,16 +19,16 @@ const Builder = ({
         {state.error ? <Error error={state.error} /> : ""}
         <div className="xs-col-12">
           <label className="form-label clearfix">
-            Label<span class="text-red">*</span>
+            Label<span className="text-red">*</span>
           </label>
-          <input type="text" className="text-input xs-col-12" onChange={e => setLabel(e.target.value)}></input>
+          <input defaultValue={state.label} type="text" className="text-input xs-col-12" onChange={e => setLabel(e.target.value)}></input>
           <p className="xs-text-6 text-gray-lightest xs-mt1">
             You can try something like "Olympic Highlights"
           </p>
         </div>
 
         <div className="xs-col-12 xs-my2">
-          <label for="url" className="form-label">
+          <label htmlFor="url" className="form-label">
             Article URL<span className="text-red">*</span>
           </label>
 

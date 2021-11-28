@@ -95,16 +95,33 @@ const App = () => {
   const onUrlChange = (e) => {
     setLookupUrl(e.target.value);
   };
- const setLabel = label => setState({...state, label});
-
+  const setLabel = label => setState({...state, label});
+  const setError = error => {
+    console.log('error', error)
+    setState({...state, error})
+  };
 
   const handleSave = () => {
-    setState({ ...state, mode: "preview" });
+    const errorMessages = [];
+    if (state.label.length === 0) {
+      errorMessages.push("Set Label");
+    }
+    
+    if (state.links.length === 0) {
+      errorMessages.push("Add at least one Link");
+    }
+
+    if (errorMessages.length !== 0) {
+      setError(errorMessages.join(", "));
+    } else {
+      setState({ ...state, mode: "preview", error: null });
+    }
   };
 
   const handleEdit = () => {
     setState({ ...state, mode: "builder" });
   };
+  
 
   return (
     <div className="lg-flex lg-flex-justify-center xs-py1 xs-px1 lg-px0">

@@ -1,7 +1,7 @@
 const Links = ({ links, deleteLink }) => {
   const linkItems = links.map((link) => {
     return (
-      <li className="bold xs-my1 xs-flex xs-flex-justify-space-between xs-col-12">
+      <li key={link.id} className="bold xs-my1 xs-flex xs-flex-justify-space-between xs-col-12">
         <div className="xs-border xs-mr1 xs-p1">{link.title}</div>
         <div className="xs-border xs-flex xs-flex-align-center xs-p1" onClick={() => deleteLink(link)}>
           <svg
