@@ -6,6 +6,7 @@ const Builder = ({
   onUrlChange,
   handleSave,
   handleEdit,
+  deleteLink,
   state
 }) => {
   return (
@@ -31,7 +32,7 @@ const Builder = ({
           </label>
 
           <p className="md-mb1">3-4 links recommended.</p>
-          {state.links.length ? <Links links={state.links} /> : ""}
+          {state.links.length ? <Links links={state.links}  deleteLink={ deleteLink} /> : ""}
           <div className="xs-flex xs-flex-justify-space-between">
             <input
               id="url"

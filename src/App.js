@@ -82,10 +82,20 @@ const App = () => {
       links: [...state.links, response.json()]
     });
   };
+  const deleteLink = (linkToDelete) => {
+    const links = state.links.filter(link => link.id != linkToDelete.id)
+    setState({
+      ...state,
+      links
+    })
+  }
+
+  const setLookupUrl = lookupUrl => setState({ ...state, lookupUrl });
 
   const onUrlChange = (e) => {
-    setState({ ...state, lookupUrl: e.target.value });
+    setLookupUrl(e.target.value);
   };
+
 
   const handleSave = () => {
     setState({ ...state, mode: "preview" });
@@ -103,6 +113,7 @@ const App = () => {
           handleUrlLookup={handleUrlLookup}
           onUrlChange={onUrlChange}
           handleSave={handleSave}
+          deleteLink={deleteLink}
         />
       ) : (
         <Preview state={state} handleEdit={handleEdit} />
