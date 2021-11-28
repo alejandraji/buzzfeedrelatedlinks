@@ -96,10 +96,8 @@ const App = () => {
     setLookupUrl(e.target.value);
   };
   const setLabel = label => setState({...state, label});
-  const setError = error => {
-    console.log('error', error)
-    setState({...state, error})
-  };
+  const setError = error => setState({...state, error});
+  const resetState = () => setState(initialState); 
 
   const handleSave = () => {
     const errorMessages = [];
@@ -133,6 +131,7 @@ const App = () => {
           handleSave={handleSave}
           deleteLink={deleteLink}
           setLabel={setLabel}
+          resetState={resetState}
         />
       ) : (
         <Preview state={state} handleEdit={handleEdit} />

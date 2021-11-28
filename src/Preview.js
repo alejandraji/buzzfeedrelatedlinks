@@ -2,7 +2,7 @@
 const Preview = ({ state, handleEdit }) => {
   const linkItems = state.links.map((link) => {
     return (
-      <li class="bfp-related-links__list-item">
+      <li key={link.id} class="bfp-related-links__list-item">
         <a href={link.url} class="bfp-related-links__link">
           {link.title}
         </a>

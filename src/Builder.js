@@ -8,6 +8,7 @@ const Builder = ({
   handleEdit,
   deleteLink,
   setLabel,
+  resetState,
   state
 }) => {
   return (
@@ -21,7 +22,7 @@ const Builder = ({
           <label className="form-label clearfix">
             Label<span className="text-red">*</span>
           </label>
-          <input defaultValue={state.label} type="text" className="text-input xs-col-12" onChange={e => setLabel(e.target.value)}></input>
+          <input value={state.label} type="text" className="text-input xs-col-12" onChange={e => setLabel(e.target.value)}></input>
           <p className="xs-text-6 text-gray-lightest xs-mt1">
             You can try something like "Olympic Highlights"
           </p>
@@ -52,7 +53,7 @@ const Builder = ({
           </div>
         </div>
         <footer className="xs-flex xs-flex-justify-end">
-          <button type="button" className="button button--secondary">
+          <button type="button" className="button button--secondary" onClick={resetState}>
             Cancel
           </button>
           <button type="button" className="button xs-ml1" onClick={handleSave}>

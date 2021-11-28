@@ -7,7 +7,7 @@ const Links = ({ links, deleteLink }) => {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 38 38"
-            class="svg-4 svg-black"
+            className="svg-4 svg-black"
             aria-hidden="true"
           >
             <title>Trash</title>
