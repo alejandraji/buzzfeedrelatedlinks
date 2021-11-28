@@ -95,6 +95,7 @@ const App = () => {
   const onUrlChange = (e) => {
     setLookupUrl(e.target.value);
   };
+ const setLabel = label => setState({...state, label});
 
 
   const handleSave = () => {
@@ -114,6 +115,7 @@ const App = () => {
           onUrlChange={onUrlChange}
           handleSave={handleSave}
           deleteLink={deleteLink}
+          setLabel={setLabel}
         />
       ) : (
         <Preview state={state} handleEdit={handleEdit} />

@@ -7,6 +7,7 @@ const Builder = ({
   handleSave,
   handleEdit,
   deleteLink,
+  setLabel,
   state
 }) => {
   return (
@@ -20,7 +21,7 @@ const Builder = ({
           <label className="form-label clearfix">
             Label<span class="text-red">*</span>
           </label>
-          <input type="text" className="text-input xs-col-12"></input>
+          <input type="text" className="text-input xs-col-12" onChange={e => setLabel(e.target.value)}></input>
           <p className="xs-text-6 text-gray-lightest xs-mt1">
             You can try something like "Olympic Highlights"
           </p>

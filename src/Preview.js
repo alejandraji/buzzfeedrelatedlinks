@@ -17,7 +17,7 @@ const Preview = ({ state, handleEdit }) => {
   return (
     <div className="xs-p1">
       <aside class="bfp-related-links">
-        <h2 class="bfp-related-links__title">{state.title}</h2>
+        <h2 class="bfp-related-links__label">{state.label}</h2>
         <ul class="bfp-related-links__list">{linkItems}</ul>
       </aside>
       <button type="button" className="button" onClick={handleEdit}>
