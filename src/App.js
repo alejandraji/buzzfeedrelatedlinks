@@ -39,29 +39,28 @@ const sampleData = [
       "https://www.buzzfeednews.com/article/clarissajanlim/us-election-2020-updates-recap"
   }
 ];
-const getBuzzDataByUrl = (url) => {
+
+
+const getBuzzDataByUrl = (url) => new Promise(resolve => {
   const hasData = sampleData.length;
   if (!url || !hasData) {
     const status = !url ? 500 : 404;
-    return {
+    return resolve({
       body: "",
-      json: () => {
-        return "";
-      },
+      json: () => Promise.resolve(""),
       status: status,
       ok: false
-    };
+    })
   }
   const data = sampleData.pop();
-  return {
+  return resolve({
     body: JSON.stringify(data),
-    json: () => {
-      return data;
-    },
+    json: () => Promise.resolve(data),
     status: 201,
     ok: true
-  };
-};
+  });
+});
+
 
 const initialState = {
   label: "",
@@ -76,11 +75,12 @@ const App = () => {
   const [state, setState] = useState(initialState);
 
   const handleUrlLookup = () => {
-    const response = getBuzzDataByUrl(state.lookupUrl);
-    setState({
+    getBuzzDataByUrl(state.lookupUrl)
+    .then(response => response.json())
+    .then(link => setState({
       ...state,
-      links: [...state.links, response.json()]
-    });
+      links: [...state.links, link]
+    }))
   };
   const deleteLink = (linkToDelete) => {
     const links = state.links.filter(link => link.id != linkToDelete.id)
