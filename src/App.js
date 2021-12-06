@@ -40,7 +40,6 @@ const sampleData = [
   }
 ];
 
-
 const getBuzzDataByUrl = (url) => new Promise(resolve => {
   const hasData = sampleData.length;
   if (!url || !hasData) {
